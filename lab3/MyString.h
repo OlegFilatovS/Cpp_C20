@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include <string>
+
 class MyString
 {
 	char* m_pStr;	//строка-член класса
@@ -19,6 +22,12 @@ public:
 	MyString& operator = (MyString&& other);
 
 	MyString(MyString&& other);
+
+	friend std::ostream& operator<<(std::ostream& os, const MyString& str);
+
+	MyString operator + (const MyString& str)const;
+
+	MyString& operator += (const MyString& str);
 
 	bool IsEmpty();
 

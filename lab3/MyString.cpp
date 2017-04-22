@@ -1,5 +1,6 @@
 #include <string>
 #include "myString.h"
+#include <iostream>
 using namespace std;
 
 // Определение конструктора.
@@ -85,6 +86,32 @@ MyString::MyString(const MyString& other) {
 	strcpy(m_pStr, other.m_pStr);
 
 }
+
+
+ostream& operator<<(ostream& os, const MyString& str) {
+	os << str.m_pStr;
+	return os;
+}
+
+MyString MyString::operator + (const MyString& str)const {
+	char* tmp = new char[(strlen(m_pStr) + strlen(str.m_pStr)) + 1];
+	strcpy(tmp, m_pStr);
+	strcat(tmp, str.m_pStr);
+	MyString SumStr(tmp);
+	delete[] tmp;
+	return SumStr;
+};
+
+MyString& MyString::operator+= (const MyString& str) {
+	char* tmp = new char[(strlen(m_pStr) + strlen(str.m_pStr)) + 1];
+	strcpy(tmp, m_pStr);
+	strcat(tmp, str.m_pStr);
+	delete[] m_pStr;
+	m_pStr = new char[strlen(tmp) + 1];
+	strcpy(m_pStr, tmp);
+	delete[] tmp;
+	return *this;
+};
 
 MyString::MyString(MyString&& other) {
 
