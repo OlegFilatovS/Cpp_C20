@@ -88,7 +88,7 @@ MyString::MyString(const MyString& other) {
 }
 
 
-ostream& operator<<(ostream& os, const MyString& str) {
+std::ostream& operator<<(std::ostream& os, const MyString& str) {
 	os << str.m_pStr;
 	return os;
 }
@@ -144,6 +144,11 @@ void MyString::SetNewString(const char* string) {
 	//	}
 
 
+}
+
+bool MyString::operator==(const char * str) const
+{
+	return !strcmp(m_pStr,str);
 }
 
 

@@ -8,6 +8,7 @@
 #include <tchar.h>
 #include "Point.h"
 #include <iostream>
+#include "Base.h"
 
 #define	  stop __asm nop
 
@@ -147,13 +148,24 @@ int _tmain(int argc, _TCHAR* argv[])
 	//вывод информации о конкретном сотруднике
 	//вывод всей (или интересующей) информации о всех сотрудниках
 	//Например:
-	/*
-	BD bd;	//создание пустой базы
-	bd["Ivanov"] = Data(30,MALE,<остальные данные>);	//если Ivanov-а в базе еще нет, то
+	
+	Base bd;	//создание пустой базы
+
+	bd["Ivanova"] = MyData(FMALE,23,"developer",2200);
+	bd["Serov"] = MyData(MALE, 33, "Hockey Player", 332200);
+	bd["Kuzmina"] = MyData(FMALE, 28, "designer", 1500);
+	bd["Loktev"] = MyData(MALE, 45, "plumber", 1000);
+	bd["Gagarin"] = MyData(MALE, 99, "cosmonaut", 2220000);	//если Ivanov-а в базе еще нет, то
 	//добавление, если уже есть, то замена его реквизитов
 	std::cout<<bd;	//вывод информации обо всех сотрудниках
 
-	*/
+
+	bd.deletePairForKey("Loktev");
+
+	bd.printValueForKey("Kuzmina");
+
+
+	stop
 
 	return 0;
 }//endmain

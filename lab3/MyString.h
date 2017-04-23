@@ -32,4 +32,6 @@ public:
 	bool IsEmpty();
 
 	void SetNewString(const char* string);
+
+	bool operator == (const char* str) const;
 };
